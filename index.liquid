@@ -3,5 +3,10 @@ layout: layout.liquid
 title: 11ty Boilerplate
 ---
 
+<div x-data="{ hello_world: await $fetchjson('https://dummyjson.com/carts/1', jsonItem='id')}">
+    <span x-text="hello_world"></span>
+    <span x-text="hello_world"></span>
+</div>
+
 <h1>Yet Another 11ty <strong>Boilerplate</strong></h1>
 <img alt="pine" src="/images/pine.png" width="50" />
