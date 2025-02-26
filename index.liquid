@@ -6,8 +6,15 @@ title: 11ty Boilerplate
 <div
     x-data="{ cartItem:  null }"
     x-init="cartItem = await (await fetch('https://dummyjson.com/carts/1')).json()"
+    class="flex flex-row items-center h-screen bg-emerald-950"
 >
-    <span x-text="JSON.stringify(cartItem)"></span>
-    <span x-text="JSON.stringify(cartItem)"></span>
-    <img x-bind:src="cartItem.products[0].thumbnail" alt="Product Image" />
+    {% comment %} <span x-text="JSON.stringify(cartItem)"></span> {% endcomment %}
+    <template x-for="product in cartItem.products">
+        <section class="card bg-white rounded-lg shadow-lg p-4 m-4 text-center w-md">
+            <div class="font-bold" x-text="product.title"></div>
+            <div class="text-sm" x-text="product.price"></div>
+            <img x-bind:src="product.thumbnail" alt="product.title">
+        </section>
+
+    </template>
 </div>
